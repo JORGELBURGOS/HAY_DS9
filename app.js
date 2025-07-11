@@ -67,11 +67,11 @@ const evaluationData = {
     
     problemSolving: {
         complexity: {
-            1: [0.1, 0.12, 0.14, 0.16, 0.19, 0.22, 0.25, 0.29, 0.33, 0.38, 0.43, 0.5, 0.57, 0.66, 0.76],
-            2: [0.12, 0.14, 0.16, 0.19, 0.22, 0.25, 0.29, 0.33, 0.38, 0.43, 0.5, 0.57, 0.66, 0.76, 0.87],
-            3: [0.14, 0.16, 0.19, 0.22, 0.25, 0.29, 0.33, 0.38, 0.43, 0.5, 0.57, 0.66, 0.76, 0.87, 1.0],
-            4: [0.16, 0.19, 0.22, 0.25, 0.29, 0.33, 0.38, 0.43, 0.5, 0.57, 0.66, 0.76, 0.87, 1.0, 1.15],
-            5: [0.19, 0.22, 0.25, 0.29, 0.33, 0.38, 0.43, 0.5, 0.57, 0.66, 0.76, 0.87, 1.0, 1.15, 1.32]
+            1: [0.07, 0.08, 0.09, 0.10, 0.12, 0.14, 0.16, 0.19, 0.22, 0.25, 0.29, 0.33, 0.38, 0.43, 0.50],
+            2: [0.08, 0.09, 0.10, 0.12, 0.14, 0.16, 0.19, 0.22, 0.25, 0.29, 0.33, 0.38, 0.43, 0.50, 0.57],
+            3: [0.09, 0.10, 0.12, 0.14, 0.16, 0.19, 0.22, 0.25, 0.29, 0.33, 0.38, 0.43, 0.50, 0.57, 0.66],
+            4: [0.10, 0.12, 0.14, 0.16, 0.19, 0.22, 0.25, 0.29, 0.33, 0.38, 0.43, 0.50, 0.57, 0.66, 0.76],
+            5: [0.12, 0.14, 0.16, 0.19, 0.22, 0.25, 0.29, 0.33, 0.38, 0.43, 0.50, 0.57, 0.66, 0.76, 0.87]
         },
         thinkingFreedom: {
             A: 0,
@@ -586,7 +586,7 @@ function calculateProblemSolvingScore(knowHowScore) {
     const adjustedIndex = Math.min(freedomIndex, complexityFactors.length - 1);
     
     const percentage = complexityFactors[adjustedIndex];
-    return Math.round(knowHowScore * percentage * 100); // Multiplicar por 100 para escalar
+    return Math.round(knowHowScore * percentage); // Cambio importante: sin multiplicar por 100
 }
 
 // Función para calcular el puntaje de Responsabilidad
@@ -607,7 +607,7 @@ function calculateResponsibilityScore() {
     const totalIndex = natureIndex + magnitudeIndex;
     const adjustedIndex = Math.min(totalIndex, freedomScores.length - 1);
     
-    return freedomScores[adjustedIndex] * 3; // Ajustar el multiplicador según necesidad
+    return freedomScores[adjustedIndex]; // Cambio importante: sin multiplicar por 3
 }
 
 // Función para determinar el nivel del puesto
