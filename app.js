@@ -156,21 +156,24 @@ const evaluationData = {
     },
     
     jobLevels: [
-        { min: 0, max: 100, level: "Nivel 1", description: "Puestos operativos básicos con tareas rutinarias y supervisión directa." },
-        { min: 101, max: 200, level: "Nivel 2", description: "Puestos operativos especializados con cierta autonomía en tareas definidas." },
-        { min: 201, max: 300, level: "Nivel 3", description: "Puestos técnicos con conocimientos especializados y responsabilidad sobre procesos." },
-        { min: 301, max: 400, level: "Nivel 4", description: "Puestos técnicos avanzados o supervisores con responsabilidad sobre equipos." },
-        { min: 401, max: 500, level: "Nivel 5", description: "Puestos de supervisión o coordinación con responsabilidad sobre áreas funcionales." },
-        { min: 501, max: 600, level: "Nivel 6", description: "Puestos de mando intermedio con responsabilidad sobre departamentos." },
-        { min: 601, max: 700, level: "Nivel 7", description: "Puestos directivos con responsabilidad sobre múltiples áreas funcionales." },
-        { min: 701, max: 800, level: "Nivel 8", description: "Alta dirección con responsabilidad estratégica sobre divisiones completas." },
-        { min: 801, max: 900, level: "Nivel 9", description: "Dirección ejecutiva con responsabilidad sobre la organización completa." },
-        { min: 901, max: 1000, level: "Nivel 10", description: "Dirección general con responsabilidad estratégica global." },
-        { min: 1001, max: 1100, level: "Nivel 11", description: "Alta dirección ejecutiva en organizaciones complejas." },
-        { min: 1101, max: 1200, level: "Nivel 12", description: "Dirección corporativa en grandes organizaciones." },
-        { min: 1201, max: 1300, level: "Nivel 13", description: "Máximo nivel ejecutivo en organizaciones multinacionales." },
-        { min: 1301, max: 1400, level: "Nivel 14", description: "Nivel estratégico superior en corporaciones globales." },
-        { min: 1401, max: 1500, level: "Nivel 15", description: "Máximo nivel de responsabilidad en organizaciones globales complejas." }
+        { min: 0, max: 200, level: "Nivel 8", description: "Puestos operativos básicos con tareas rutinarias y supervisión directa." },
+        { min: 201, max: 400, level: "Nivel 9", description: "Puestos operativos especializados con cierta autonomía en tareas definidas." },
+        { min: 401, max: 600, level: "Nivel 10", description: "Puestos técnicos con conocimientos especializados y responsabilidad sobre procesos." },
+        { min: 601, max: 800, level: "Nivel 11", description: "Puestos técnicos avanzados o supervisores con responsabilidad sobre equipos." },
+        { min: 801, max: 1000, level: "Nivel 12", description: "Puestos de supervisión o coordinación con responsabilidad sobre áreas funcionales." },
+        { min: 1001, max: 1200, level: "Nivel 13", description: "Puestos de mando intermedio con responsabilidad sobre departamentos." },
+        { min: 1201, max: 1400, level: "Nivel 14", description: "Puestos directivos con responsabilidad sobre múltiples áreas funcionales." },
+        { min: 1401, max: 1600, level: "Nivel 15", description: "Alta dirección con responsabilidad estratégica sobre divisiones completas." },
+        { min: 1601, max: 1800, level: "Nivel 16", description: "Dirección ejecutiva con responsabilidad sobre la organización completa." },
+        { min: 1801, max: 2000, level: "Nivel 17", description: "Dirección general con responsabilidad estratégica global." },
+        { min: 2001, max: 2200, level: "Nivel 18", description: "Alta dirección ejecutiva en organizaciones complejas." },
+        { min: 2201, max: 2400, level: "Nivel 19", description: "Dirección corporativa en grandes organizaciones." },
+        { min: 2401, max: 2600, level: "Nivel 20", description: "Máximo nivel ejecutivo en organizaciones multinacionales." },
+        { min: 2601, max: 2800, level: "Nivel 21", description: "Nivel estratégico superior en corporaciones globales." },
+        { min: 2801, max: 3000, level: "Nivel 22", description: "Máximo nivel de responsabilidad en organizaciones globales complejas." },
+        { min: 3001, max: 3200, level: "Nivel 23", description: "Nivel ejecutivo superior en corporaciones globales." },
+        { min: 3201, max: 3400, level: "Nivel 24", description: "Máximo nivel de dirección estratégica global." },
+        { min: 3401, max: 3600, level: "Nivel 25", description: "Máximo nivel de responsabilidad en organizaciones globales complejas." }
     ],
     
     profileTypes: {
@@ -452,7 +455,9 @@ function createLevelDistributionChart(levelCounts) {
     const backgroundColors = [
         '#4361ee', '#3f37c9', '#4cc9f0', '#4895ef', '#560bad',
         '#b5179e', '#f72585', '#4caf50', '#ff9800', '#607d8b',
-        '#9c27b0', '#2196f3', '#00bcd4', '#009688', '#8bc34a'
+        '#9c27b0', '#2196f3', '#00bcd4', '#009688', '#8bc34a',
+        '#ff5722', '#795548', '#9e9e9e', '#607d8b', '#3f51b5',
+        '#673ab7', '#e91e63', '#00bcd4', '#009688', '#8bc34a'
     ];
     
     window.evaluationCharts.levelDistribution = new Chart(ctx, {
@@ -493,7 +498,9 @@ function createScoreDistributionChart(scores) {
     
     const ranges = [
         '0-200', '201-400', '401-600', '601-800', '801-1000', 
-        '1001-1200', '1201-1400', '1401-1600'
+        '1001-1200', '1201-1400', '1401-1600', '1601-1800', '1801-2000',
+        '2001-2200', '2201-2400', '2401-2600', '2601-2800', '2801-3000',
+        '3001-3200', '3201-3400', '3401-3600'
     ];
     
     const counts = ranges.map(range => {
@@ -611,8 +618,8 @@ function determineJobLevel(totalScore) {
         }
     }
     return { 
-        level: "No determinado", 
-        description: "El puntaje calculado está fuera de los rangos predefinidos" 
+        level: "Nivel no determinado", 
+        description: "El puntaje calculado está fuera de los rangos predefinidos. Considere ajustar los parámetros de evaluación." 
     };
 }
 
@@ -622,7 +629,8 @@ function animateProgressCircle(score) {
     if (circle) {
         const radius = circle.r.baseVal.value;
         const circumference = 2 * Math.PI * radius;
-        const offset = circumference - (score / 1600) * circumference;
+        const maxScore = 3600; // Ajustado al nuevo máximo
+        const offset = circumference - (score / maxScore) * circumference;
         
         circle.style.strokeDasharray = `${circumference} ${circumference}`;
         circle.style.strokeDashoffset = circumference;
@@ -657,7 +665,7 @@ function animateProgressBars(scores) {
     const bars = [
         { id: 'knowhow-bar', value: scores.knowHow / 1056 * 100 },
         { id: 'problemsolving-bar', value: scores.problemSolving / 1056 * 100 },
-        { id: 'responsibility-bar', value: scores.responsibility / 1600 * 100 }
+        { id: 'responsibility-bar', value: scores.responsibility / 3600 * 100 }
     ];
     
     bars.forEach((bar, index) => {
