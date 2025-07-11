@@ -586,7 +586,7 @@ function calculateProblemSolvingScore(knowHowScore) {
     const adjustedIndex = Math.min(freedomIndex, complexityFactors.length - 1);
     
     const percentage = complexityFactors[adjustedIndex];
-    return Math.round(knowHowScore * percentage);
+    return Math.round(knowHowScore * percentage * 100); // Multiplicar por 100 para escalar
 }
 
 // Función para calcular el puntaje de Responsabilidad
@@ -607,7 +607,7 @@ function calculateResponsibilityScore() {
     const totalIndex = natureIndex + magnitudeIndex;
     const adjustedIndex = Math.min(totalIndex, freedomScores.length - 1);
     
-    return freedomScores[adjustedIndex];
+    return freedomScores[adjustedIndex] * 3; // Ajustar el multiplicador según necesidad
 }
 
 // Función para determinar el nivel del puesto
@@ -837,8 +837,13 @@ function generatePDF() {
         ],
         headStyles: { 
             fillColor: [67, 97, 238],
-            textColor: [255, 255, 255]
-        }
+            textColor: [255, 255, 255],
+            fontStyle: 'bold'
+        },
+        alternateRowStyles: {
+            fillColor: [240, 240, 240]
+        },
+        margin: { top: 30 }
     });
     
     // Descripción del puesto
